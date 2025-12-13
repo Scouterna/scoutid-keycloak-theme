@@ -26,7 +26,7 @@ and Scouts of Sweden's membership system.
 ```bash
 git clone https://github.com/keycloakify/keycloakify-starter
 cd keycloakify-starter
-yarn install # Or use an other package manager, just be sure to delete the yarn.lock if you use another package manager.
+npm install # Or use an other package manager.
 ```
 
 # Testing the theme locally

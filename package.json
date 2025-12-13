@@ -1,10 +1,10 @@
 {
-    "name": "keycloakify-starter",
-    "version": "0.0.0",
-    "description": "Starter for Keycloakify 11",
+    "name": "scoutid-keycloak-theme",
+    "version": "0.1.0",
+    "description": "ScoutID Keycloak theme",
     "repository": {
         "type": "git",
-        "url": "git://github.com/codegouvfr/keycloakify-starter.git"
+        "url": "git://github.com/Scouterna/scoutid-keycloak-theme.git"
     },
     "type": "module",
     "scripts": {

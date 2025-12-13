@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap');
+
+.kcHeaderWrapperClass {
+  background-image: url(./assets/scoutid.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+span[data-kc-msg="loginTitleHtml"] {
+  /* This ensures the element is not displayed and does not take up any space */
+  display: none !important; 
+}
+
+body {
+  font-family: "Libre Franklin";
+}

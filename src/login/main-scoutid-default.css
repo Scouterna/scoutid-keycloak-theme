@@ -1,0 +1,4 @@
+@import url(./main-common.css);
+body.kcBodyClass {
+  background: url(/background.jpg) no-repeat center center fixed;
+}
