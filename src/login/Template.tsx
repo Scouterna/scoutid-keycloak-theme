@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { clsx } from "keycloakify/tools/clsx";
 import { kcSanitize } from "keycloakify/lib/kcSanitize";
 import type { TemplateProps } from "keycloakify/login/TemplateProps";
@@ -30,6 +30,8 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
     const { msg, msgStr, currentLanguage, enabledLanguages } = i18n;
 
     const { realm, auth, url, message, isAppInitiatedAction } = kcContext;
+
+    const [showHelp, setShowHelp] = useState(false);
 
     useEffect(() => {
         document.title = documentTitle ?? msgStr("loginTitle", realm.displayName);
@@ -178,6 +180,32 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
                             </div>
                         )}
                     </div>
+                </div>
+                <div id="scoutid-help" style={{ marginTop: '20px', textAlign: 'center', fontSize: '14px', color: '#666' }}>
+                    <p>Logga in med medlemsnummer, 12-siffrigt personnummer eller din primära epostadress.</p>
+                </div>
+                <div id="scoutid-help" style={{ marginTop: '20px', textAlign: 'center', fontSize: '12px', color: '#666' }}>
+                    <button 
+                        onClick={() => setShowHelp(!showHelp)}
+                        style={{ 
+                            background: 'none', 
+                            border: 'none', 
+                            color: '#003660', 
+                            textDecoration: 'underline', 
+                            cursor: 'pointer',
+                            fontSize: '12px'
+                        }}
+                    >
+                        {showHelp ? 'Dölj hjälp' : 'Behöver du hjälp att logga in?'}
+                    </button>
+                    {showHelp && (
+                        <div style={{ marginTop: '10px' }}>
+                            <p><a href="https://www.scoutnet.se/request_password">Återställ lösenord</a></p>
+                            <p>Om flera medlemmar använder samma primära epostadress så kommer inloggningen att misslyckas, använd då istället medlemsnummer eller personnummer (12 siffror).</p>
+                            <p>ScoutID samlar scoutinloggningar bakom samma lösenord som till Scoutnet. För att använda ScoutID så behöver du därför ha ett konto i Scoutnet. De flesta scouter har det automatiskt, men om du är medlem genom Equmenia kontakta scoutnet@scouterna.se för att få hjälp med att skaffa ett ScoutID.</p>
+                            <p><a href="https://www.scouterna.se/scout-ledare-kar/leda-kar/etjanster/scoutid/">Läs mer om ScoutID här.</a></p>
+                        </div>
+                    )}
                 </div>
             </div>
         </div>
