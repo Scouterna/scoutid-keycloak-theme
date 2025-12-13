@@ -7,6 +7,7 @@ import { useSetClassName } from "keycloakify/tools/useSetClassName";
 import { useInitialize } from "keycloakify/login/Template.useInitialize";
 import type { I18n } from "./i18n";
 import type { KcContext } from "./KcContext";
+import scoutidLogo from "./assets/scoutid.png";
 
 export default function Template(props: TemplateProps<KcContext, I18n>) {
     const {
@@ -57,7 +58,7 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
         <div className={kcClsx("kcLoginClass")}>
             <div id="kc-header" className={kcClsx("kcHeaderClass")}>
                 <div id="kc-header-wrapper" className={kcClsx("kcHeaderWrapperClass")}>
-                    <img src="/scoutid.png" alt="ScoutID" style={{ height: '60px' }} />
+                    <img src={scoutidLogo} alt="ScoutID" style={{ height: '60px' }} />
                 </div>
             </div>
             <div className={kcClsx("kcFormCardClass")}>
