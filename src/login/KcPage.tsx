@@ -1,12 +1,13 @@
-import { Suspense, lazy } from "react";
+import { Suspense, lazy, useMemo } from "react";
 import type { ClassKey } from "keycloakify/login";
 import type { KcContext } from "./KcContext";
 import { useI18n } from "./i18n";
 import DefaultPage from "keycloakify/login/DefaultPage";
-import Template from "keycloakify/login/Template";
+import Template from "./Template";
 const UserProfileFormFields = lazy(
     () => import("keycloakify/login/UserProfileFormFields")
 );
+import "./main-common.css";
 
 const doMakeUserConfirmPassword = true;
 
@@ -14,6 +15,8 @@ export default function KcPage(props: { kcContext: KcContext }) {
     const { kcContext } = props;
 
     const { i18n } = useI18n({ kcContext });
+
+    useCustomCss(kcContext);
 
     return (
         <Suspense>
@@ -38,3 +41,17 @@ export default function KcPage(props: { kcContext: KcContext }) {
 }
 
 const classes = {} satisfies { [key in ClassKey]?: string };
+
+function useCustomCss(kcContext: KcContext) {
+    useMemo(()=> {
+
+        switch(kcContext.themeName) {
+            case "scoutid":
+                import("./main-scoutid-default.css");
+                break;
+            default:
+                import("./main-scoutid-default.css");
+                break;
+        }
+    }, []);
+}
