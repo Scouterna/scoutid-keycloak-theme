@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap');
 
 .kcHeaderWrapperClass {
-  background-image: url(./assets/scoutid.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
 }
-span[data-kc-msg="loginTitleHtml"] {
-  /* This ensures the element is not displayed and does not take up any space */
-  display: none !important; 
+
+.kcLocaleMainClass {
+  display: none !important;
 }
 
 body {
