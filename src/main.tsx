@@ -1,5 +1,5 @@
-import { createRoot } from "react-dom/client";
 import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
 import { KcPage } from "./kc.gen";
 
 // The following block can be uncommented to test a specific page with `yarn dev`
@@ -15,12 +15,13 @@ if (import.meta.env.DEV) {
 }
 */
 
+// biome-ignore lint/style/noNonNullAssertion: We know it's there.
 createRoot(document.getElementById("root")!).render(
-    <StrictMode>
-        {!window.kcContext ? (
-            <h1>No Keycloak Context</h1>
-        ) : (
-            <KcPage kcContext={window.kcContext} />
-        )}
-    </StrictMode>
+	<StrictMode>
+		{!window.kcContext ? (
+			<h1>No Keycloak Context</h1>
+		) : (
+			<KcPage kcContext={window.kcContext} />
+		)}
+	</StrictMode>,
 );
