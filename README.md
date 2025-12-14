@@ -23,10 +23,13 @@ and Scouts of Sweden's membership system.
 
 # Quick start
 
+Make sure you have PNPM installed. If you don't, follow the instructions
+[here](https://pnpm.io/installation).
+
 ```bash
 git clone https://github.com/keycloakify/keycloakify-starter
 cd keycloakify-starter
-npm install # Or use an other package manager.
+pnpm install
 ```
 
 # Testing the theme locally
@@ -47,7 +50,7 @@ The `mvn` command must be in the $PATH.
 -   On Windows: `choco install openjdk` and `choco install maven` (Or download from [here](https://maven.apache.org/download.cgi))
 
 ```bash
-npm run build-keycloak-theme
+pnpm run build-keycloak-theme
 ```
 
 Note that by default Keycloakify generates multiple .jar files for different versions of Keycloak.  
@@ -56,13 +59,13 @@ You can customize this behavior, see documentation [here](https://docs.keycloaki
 # Initializing the account theme
 
 ```bash
-npx keycloakify initialize-account-theme
+pnpm exec keycloakify initialize-account-theme
 ```
 
 # Initializing the email theme
 
 ```bash
-npx keycloakify initialize-email-theme
+pnpm exec keycloakify initialize-email-theme
 ```
 
 # GitHub Actions
