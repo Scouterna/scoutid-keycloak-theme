@@ -8,6 +8,9 @@ export default defineConfig({
 		react(),
 		keycloakify({
 			themeName: ["scoutid"],
+			accountThemeImplementation: "none",
+			groupId: "se.scouterna.keycloak",
+			artifactId: "scoutid-keycloak-theme",
 		}),
 	],
 });
