@@ -1,6 +1,6 @@
 {
 	"name": "scoutid-keycloak-theme",
-	"version": "0.1.3",
+	"version": "0.1.1",
 	"description": "ScoutID Keycloak theme",
 	"repository": {
 		"type": "git",
