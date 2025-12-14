@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.3](https://github.com/Scouterna/scoutid-keycloak-theme/compare/v0.1.2...v0.1.3) (2025-12-14)
+
+
+### Bug Fixes
+
+* dummy commit ([8bead8e](https://github.com/Scouterna/scoutid-keycloak-theme/commit/8bead8e494f57bbcb50fc3988f877bfd66d3ad33))
+
 ## [0.1.2](https://github.com/Scouterna/scoutid-keycloak-theme/compare/v0.1.1...v0.1.2) (2025-12-14)
 
 
