@@ -33,8 +33,14 @@ pnpm install
 ```
 
 # Testing the theme locally
+To test layout in interactive mode using storybook, run:
+```bash
+pnpm run storybook
+```
+Read more here: [Documentation](https://docs.keycloakify.dev/testing-your-theme)
 
-[Documentation](https://docs.keycloakify.dev/testing-your-theme)
+
+If you want to try the full flow including scoutnet login, follow instructions in [scoutid-keycloak-provider](https://github.com/Scouterna/scoutid-keycloak-provider).
 
 # How to customize the theme
 
@@ -55,18 +61,6 @@ pnpm run build-keycloak-theme
 
 Note that by default Keycloakify generates multiple .jar files for different versions of Keycloak.  
 You can customize this behavior, see documentation [here](https://docs.keycloakify.dev/features/compiler-options/keycloakversiontargets).
-
-# Initializing the account theme
-
-```bash
-pnpm exec keycloakify initialize-account-theme
-```
-
-# Initializing the email theme
-
-```bash
-pnpm exec keycloakify initialize-email-theme
-```
 
 # GitHub Actions
 
