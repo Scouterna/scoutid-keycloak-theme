@@ -27,8 +27,8 @@ Make sure you have PNPM installed. If you don't, follow the instructions
 [here](https://pnpm.io/installation).
 
 ```bash
-git clone https://github.com/keycloakify/keycloakify-starter
-cd keycloakify-starter
+git clone https://github.com/Scouterna/scoutid-keycloak-theme
+cd scoutid-keycloak-theme
 pnpm install
 ```
 
