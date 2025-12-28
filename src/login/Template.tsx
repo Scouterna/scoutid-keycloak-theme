@@ -234,21 +234,7 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
 					</div>
 				</div>
 				<div
-					id="scoutid-help"
-					style={{
-						marginTop: "20px",
-						textAlign: "center",
-						fontSize: "14px",
-						color: "#666",
-					}}
-				>
-					<p>
-						Logga in med medlemsnummer, 12-siffrigt personnummer eller din
-						primära epostadress.
-					</p>
-				</div>
-				<div
-					id="scoutid-help"
+					id="scoutid-help-expandable"
 					style={{
 						marginTop: "20px",
 						textAlign: "center",
@@ -267,30 +253,22 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
 							fontSize: "12px",
 						}}
 					>
-						{showHelp ? "Dölj hjälp" : "Behöver du hjälp att logga in?"}
+						{showHelp
+							? msg("scoutid.help.toggle.hide")
+							: msg("scoutid.help.toggle.show")}
 					</button>
 					{showHelp && (
 						<div style={{ marginTop: "10px" }}>
 							<p>
 								<a href="https://www.scoutnet.se/request_password">
-									Återställ lösenord
+									{msg("scoutid.help.reset.password")}
 								</a>
 							</p>
-							<p>
-								Om flera medlemmar använder samma primära epostadress så kommer
-								inloggningen att misslyckas, använd då istället medlemsnummer
-								eller personnummer (12 siffror).
-							</p>
-							<p>
-								ScoutID samlar scoutinloggningar bakom samma lösenord som till
-								Scoutnet. För att använda ScoutID så behöver du därför ha ett
-								konto i Scoutnet. De flesta scouter har det automatiskt, men om
-								du är medlem genom Equmenia kontakta scoutnet@scouterna.se för
-								att få hjälp med att skaffa ett ScoutID.
-							</p>
+							<p>{msg("scoutid.help.email.conflict")}</p>
+							<p>{msg("scoutid.help.about")}</p>
 							<p>
 								<a href="https://www.scouterna.se/scout-ledare-kar/leda-kar/etjanster/scoutid/">
-									Läs mer om ScoutID här.
+									{msg("scoutid.help.learn.more")}
 								</a>
 							</p>
 						</div>
