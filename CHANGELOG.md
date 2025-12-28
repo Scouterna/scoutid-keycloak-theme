@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.2.0](https://github.com/Scouterna/scoutid-keycloak-theme/compare/v0.1.3...v0.2.0) (2025-12-28)
+
+
+### Features
+
+* International messages introduced ([206d7c6](https://github.com/Scouterna/scoutid-keycloak-theme/commit/206d7c674273499ecb5bdf62b441857baa8a3152))
+
+
+### Bug Fixes
+
+* remove personnummer digit specification ([783c038](https://github.com/Scouterna/scoutid-keycloak-theme/commit/783c038d8703e0e458a20d48bc663990de5716e2))
+
 ## [0.1.3](https://github.com/Scouterna/scoutid-keycloak-theme/compare/v0.1.2...v0.1.3) (2025-12-14)
 
 
