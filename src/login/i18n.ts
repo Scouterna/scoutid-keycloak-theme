@@ -19,8 +19,9 @@ const { useI18n, ofTypeI18n } = i18nBuilder
 	.withThemeName<ThemeName>()
 	.withCustomTranslations({
 		en: {
-			// Override default Keycloak field label
+			// Override default Keycloak field labels
 			usernameOrEmail: "Membership number, social security number, or primary email address",
+			username: "Membership number, social security number, or primary email address",
 			// ScoutID help text
 			"scoutid.help.toggle.show": "Need help logging in?",
 			"scoutid.help.toggle.hide": "Hide help",
@@ -30,8 +31,9 @@ const { useI18n, ofTypeI18n } = i18nBuilder
 			"scoutid.help.learn.more": "Learn more about ScoutID here.",
 		},
 		sv: {
-			// Override default Keycloak field label
+			// Override default Keycloak field labels
 			usernameOrEmail: "Medlemsnummer, personnummer eller primär epostadress",
+			username: "Medlemsnummer, personnummer eller primär epostadress",
 			// ScoutID help text
 			"scoutid.help.toggle.show": "Behöver du hjälp att logga in?",
 			"scoutid.help.toggle.hide": "Dölj hjälp",
