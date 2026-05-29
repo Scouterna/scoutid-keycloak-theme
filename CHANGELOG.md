@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.1](https://github.com/Scouterna/scoutid-keycloak-theme/compare/v0.3.0...v0.3.1) (2026-05-29)
+
+
+### Bug Fixes
+
+* rename typod prop ([6c624aa](https://github.com/Scouterna/scoutid-keycloak-theme/commit/6c624aaf2fda0f9216ae12662a90d9459e367ba7))
+
 ## [0.3.0](https://github.com/Scouterna/scoutid-keycloak-theme/compare/v0.2.1...v0.3.0) (2026-05-29)
 
 
