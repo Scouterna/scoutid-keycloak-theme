@@ -4,15 +4,15 @@ import type { ThemeName } from "../kc.gen";
 
 /**
  * IMPORTANT: Translation duplication required for Keycloakify v11
- * 
+ *
  * This file defines translations for Storybook development environment.
  * The same translations MUST also be maintained in messages_*.properties files
  * for the actual Keycloak deployment.
- * 
+ *
  * When adding/modifying translations:
  * 1. Update this file for Storybook to work
  * 2. Update messages_en.properties and messages_sv.properties for deployment
- * 
+ *
  * @see: https://docs.keycloakify.dev/features/i18n
  */
 const { useI18n, ofTypeI18n } = i18nBuilder
@@ -20,27 +20,41 @@ const { useI18n, ofTypeI18n } = i18nBuilder
 	.withCustomTranslations({
 		en: {
 			// Override default Keycloak field labels
-			usernameOrEmail: "Membership number, social security number, or primary email address",
-			username: "Membership number, social security number, or primary email address",
-			// ScoutID help text
-			"scoutid.help.toggle.show": "Need help logging in?",
-			"scoutid.help.toggle.hide": "Hide help",
-			"scoutid.help.reset.password": "Reset password",
-			"scoutid.help.email.conflict": "If multiple members use the same primary email address, login will fail. Use your membership number or personal number instead.",
-			"scoutid.help.about": "ScoutID consolidates scout logins behind the same password as Scoutnet. To use ScoutID, you need an account in Scoutnet. Most scouts have this automatically, but if you are a member through Equmenia, contact scoutnet@scouterna.se for help getting a ScoutID.",
-			"scoutid.help.learn.more": "Learn more about ScoutID here.",
+			loginAccountTitle: "Sign in",
+			usernameOrEmail: "Username",
+			username: "Username",
+			// Additional UI texts
+			usernameHelpText:
+				"Membership number, personal identity number, or primary email address",
+			// Login page
+			"scoutid.login.subheadline": "Sign in with your ScoutID to continue.",
+			// Help section
+			"scoutid.help.title": "Don't have a login?",
+			"scoutid.help.body":
+				"You need a ScoutID, which you automatically have if you are a member of a scout troop directly connected to Scouterna, NSF, or Salt Scout.",
+			"scoutid.help.learn.more": "Learn more about ScoutID",
+			"scoutid.help.equmenia.before":
+				"If you are a member of Equmenia, contact",
+			"scoutid.help.equmenia.after": "for help getting a ScoutID.",
 		},
 		sv: {
 			// Override default Keycloak field labels
-			usernameOrEmail: "Medlemsnummer, personnummer eller primär epostadress",
-			username: "Medlemsnummer, personnummer eller primär epostadress",
-			// ScoutID help text
-			"scoutid.help.toggle.show": "Behöver du hjälp att logga in?",
-			"scoutid.help.toggle.hide": "Dölj hjälp",
-			"scoutid.help.reset.password": "Återställ lösenord",
-			"scoutid.help.email.conflict": "Om flera medlemmar använder samma primära epostadress så kommer inloggningen att misslyckas, använd då istället medlemsnummer eller personnummer.",
-			"scoutid.help.about": "ScoutID samlar scoutinloggningar bakom samma lösenord som till Scoutnet. För att använda ScoutID så behöver du därför ha ett konto i Scoutnet. De flesta scouter har det automatiskt, men om du är medlem genom Equmenia kontakta scoutnet@scouterna.se för att få hjälp med att skaffa ett ScoutID.",
-			"scoutid.help.learn.more": "Läs mer om ScoutID här.",
+			loginAccountTitle: "Logga in",
+			usernameOrEmail: "Användarnamn",
+			username: "Användarnamn",
+			// Additional UI texts
+			usernameHelpText: "Medlemsnummer, personnummer eller primär epostadress",
+			// Login page
+			"scoutid.login.subheadline":
+				"Logga in med ditt ScoutID för att fortsätta.",
+			// Help section
+			"scoutid.help.title": "Har du en inloggning?",
+			"scoutid.help.body":
+				"För att logga in på den här e-tjänsten behöver du ett ScoutID, som du har automatiskt om du är direktansluten till Scouterna, Nykterhetsrörelsens Scoutförbund eller Salt Scout.",
+			"scoutid.help.learn.more": "Läs mer om ScoutID",
+			"scoutid.help.equmenia.before": "Om du är medlem i Equmenia, kontakta",
+			"scoutid.help.equmenia.after":
+				"för att få hjälp med att skaffa ett ScoutID.",
 		},
 	})
 	.build();

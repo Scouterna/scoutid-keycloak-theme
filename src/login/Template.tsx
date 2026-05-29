@@ -1,11 +1,11 @@
+import { ScoutCallout } from "@scouterna/ui-react";
 import { kcSanitize } from "keycloakify/lib/kcSanitize";
-import { getKcClsx } from "keycloakify/login/lib/kcClsx";
 import { useInitialize } from "keycloakify/login/Template.useInitialize";
 import type { TemplateProps } from "keycloakify/login/TemplateProps";
-import { clsx } from "keycloakify/tools/clsx";
 import { useSetClassName } from "keycloakify/tools/useSetClassName";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import scoutidLogo from "./assets/scoutid.png";
+import background from "./assets/waves.svg";
 import type { I18n } from "./i18n";
 import type { KcContext } from "./KcContext";
 
@@ -13,7 +13,6 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
 	const {
 		displayInfo = false,
 		displayMessage = true,
-		displayRequiredFields = false,
 		headerNode,
 		socialProvidersNode = null,
 		infoNode = null,
@@ -22,30 +21,20 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
 		kcContext,
 		i18n,
 		doUseDefaultCss,
-		classes,
 		children,
 	} = props;
 
-	const { kcClsx } = getKcClsx({ doUseDefaultCss, classes });
-
-	const { msg, msgStr, currentLanguage, enabledLanguages } = i18n;
+	const { msg, msgStr } = i18n;
 
 	const { realm, auth, url, message, isAppInitiatedAction } = kcContext;
 
-	const [showHelp, setShowHelp] = useState(false);
-
 	useEffect(() => {
 		document.title = documentTitle ?? msgStr("loginTitle", realm.displayName);
-	}, []);
-
-	useSetClassName({
-		qualifiedName: "html",
-		className: kcClsx("kcHtmlClass"),
-	});
+	}, [documentTitle, msgStr, realm.displayName]);
 
 	useSetClassName({
 		qualifiedName: "body",
-		className: bodyClassName ?? kcClsx("kcBodyClass"),
+		className: bodyClassName,
 	});
 
 	const { isReadyToRender } = useInitialize({ kcContext, doUseDefaultCss });
@@ -55,226 +44,136 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
 	}
 
 	return (
-		<div className={kcClsx("kcLoginClass")}>
-			<div id="kc-header" className={kcClsx("kcHeaderClass")}>
-				<div id="kc-header-wrapper" className={kcClsx("kcHeaderWrapperClass")}>
-					<img src={scoutidLogo} alt="ScoutID" style={{ height: "60px" }} />
-				</div>
-			</div>
-			<div className={kcClsx("kcFormCardClass")}>
-				<header className={kcClsx("kcFormHeaderClass")}>
-					{enabledLanguages.length > 1 && (
-						<div className={kcClsx("kcLocaleMainClass")} id="kc-locale">
-							<div
-								id="kc-locale-wrapper"
-								className={kcClsx("kcLocaleWrapperClass")}
-							>
-								<div
-									id="kc-locale-dropdown"
-									className={clsx(
-										"menu-button-links",
-										kcClsx("kcLocaleDropDownClass"),
-									)}
-								>
-									<button
-										tabIndex={1}
-										id="kc-current-locale-link"
-										aria-label={msgStr("languages")}
-										aria-haspopup="true"
-										aria-expanded="false"
-										aria-controls="language-switch1"
-									>
-										{currentLanguage.label}
-									</button>
-									<ul
-										role="menu"
-										tabIndex={-1}
-										aria-labelledby="kc-current-locale-link"
-										aria-activedescendant=""
-										id="language-switch1"
-										className={kcClsx("kcLocaleListClass")}
-									>
-										{enabledLanguages.map(({ languageTag, label, href }, i) => (
-											<li
-												key={languageTag}
-												className={kcClsx("kcLocaleListItemClass")}
-												role="none"
-											>
-												<a
-													role="menuitem"
-													id={`language-${i + 1}`}
-													className={kcClsx("kcLocaleItemClass")}
-													href={href}
-												>
-													{label}
-												</a>
-											</li>
-										))}
-									</ul>
-								</div>
-							</div>
-						</div>
-					)}
-					{(() => {
-						const node = !(
-							auth !== undefined &&
-							auth.showUsername &&
-							!auth.showResetCredentials
-						) ? (
-							<h1 id="kc-page-title">{headerNode}</h1>
-						) : (
-							<div id="kc-username" className={kcClsx("kcFormGroupClass")}>
-								<label id="kc-attempted-username">
-									{auth.attemptedUsername}
-								</label>
-								<a
-									id="reset-login"
-									href={url.loginRestartFlowUrl}
-									aria-label={msgStr("restartLoginTooltip")}
-								>
-									<div className="kc-login-tooltip">
-										<i className={kcClsx("kcResetFlowIcon")}></i>
-										<span className="kc-tooltip-text">
-											{msg("restartLoginTooltip")}
-										</span>
-									</div>
-								</a>
-							</div>
-						);
+		<div
+			className="flex min-h-screen flex-col items-center justify-center gap-6 py-12 bg-cover bg-top bg-[#EEF1F5] px-4"
+			style={{ backgroundImage: `url(${background})` }}
+		>
+			<header>
+				<img src={scoutidLogo} alt="ScoutID" className="h-11.5" />
+			</header>
 
-						if (displayRequiredFields) {
-							return (
-								<div className={kcClsx("kcContentWrapperClass")}>
-									<div
-										className={clsx(kcClsx("kcLabelWrapperClass"), "subtitle")}
-									>
-										<span className="subtitle">
-											<span className="required">*</span>
-											{msg("requiredFields")}
-										</span>
-									</div>
-									<div className="col-md-10">{node}</div>
-								</div>
-							);
-						}
-
-						return node;
-					})()}
-				</header>
-				<div id="kc-content">
-					<div id="kc-content-wrapper">
-						{/* App-initiated actions should not see warning messages about the need to complete the action during login. */}
-						{displayMessage &&
-							message !== undefined &&
-							(message.type !== "warning" || !isAppInitiatedAction) && (
-								<div
-									className={clsx(
-										`alert-${message.type}`,
-										kcClsx("kcAlertClass"),
-										`pf-m-${message?.type === "error" ? "danger" : message.type}`,
-									)}
-								>
-									<div className="pf-c-alert__icon">
-										{message.type === "success" && (
-											<span className={kcClsx("kcFeedbackSuccessIcon")}></span>
-										)}
-										{message.type === "warning" && (
-											<span className={kcClsx("kcFeedbackWarningIcon")}></span>
-										)}
-										{message.type === "error" && (
-											<span className={kcClsx("kcFeedbackErrorIcon")}></span>
-										)}
-										{message.type === "info" && (
-											<span className={kcClsx("kcFeedbackInfoIcon")}></span>
-										)}
-									</div>
-									<span
-										className={kcClsx("kcAlertTitleClass")}
-										dangerouslySetInnerHTML={{
-											__html: kcSanitize(message.summary),
-										}}
-									/>
-								</div>
-							)}
-						{children}
-						{auth !== undefined && auth.showTryAnotherWayLink && (
-							<form
-								id="kc-select-try-another-way-form"
-								action={url.loginAction}
-								method="post"
-							>
-								<div className={kcClsx("kcFormGroupClass")}>
-									<input type="hidden" name="tryAnotherWay" value="on" />
+			<div className="w-full max-w-110 flex flex-col gap-4.5 bg-white rounded-[14px] border border-[#E7EAF0] shadow-card pt-9 px-10 pb-8">
+				{/* Language switcher — only when realm has multiple languages */}
+				{/* {enabledLanguages.length > 1 && (
+					<nav id="kc-locale" aria-label={msgStr("languages")}>
+						<ul className="flex gap-3 list-none p-0 m-0 text-[13px]">
+							{enabledLanguages.map(({ languageTag, label, href }) => (
+								<li key={languageTag}>
 									<a
-										href="#"
-										id="try-another-way"
-										onClick={() => {
-											document.forms[
-												"kc-select-try-another-way-form" as never
-											].requestSubmit();
-											return false;
-										}}
+										href={href}
+										aria-current={
+											languageTag === currentLanguage.languageTag
+												? "true"
+												: undefined
+										}
+										className={
+											languageTag === currentLanguage.languageTag
+												? "font-semibold text-[#28354C]"
+												: "text-[#4E84BE] no-underline hover:underline"
+										}
 									>
-										{msg("doTryAnotherWay")}
+										{label}
 									</a>
-								</div>
-							</form>
-						)}
-						{socialProvidersNode}
-						{displayInfo && (
-							<div id="kc-info" className={kcClsx("kcSignUpClass")}>
-								<div
-									id="kc-info-wrapper"
-									className={kcClsx("kcInfoAreaWrapperClass")}
-								>
-									{infoNode}
-								</div>
-							</div>
-						)}
-					</div>
-				</div>
-				<div
-					id="scoutid-help-expandable"
-					style={{
-						marginTop: "20px",
-						textAlign: "center",
-						fontSize: "12px",
-						color: "#666",
-					}}
-				>
-					<button
-						onClick={() => setShowHelp(!showHelp)}
-						style={{
-							background: "none",
-							border: "none",
-							color: "#003660",
-							textDecoration: "underline",
-							cursor: "pointer",
-							fontSize: "12px",
-						}}
+								</li>
+							))}
+						</ul>
+					</nav>
+				)} */}
+
+				{/* Heading — show attempted username in multi-step flows */}
+				{auth?.showUsername && !auth.showResetCredentials ? (
+					<div
+						id="kc-username"
+						className="flex items-center justify-between gap-4"
 					>
-						{showHelp
-							? msg("scoutid.help.toggle.hide")
-							: msg("scoutid.help.toggle.show")}
-					</button>
-					{showHelp && (
-						<div style={{ marginTop: "10px" }}>
-							<p>
-								<a href="https://www.scoutnet.se/request_password">
-									{msg("scoutid.help.reset.password")}
-								</a>
-							</p>
-							<p>{msg("scoutid.help.email.conflict")}</p>
-							<p>{msg("scoutid.help.about")}</p>
-							<p>
-								<a href="https://www.scouterna.se/scout-ledare-kar/leda-kar/etjanster/scoutid/">
-									{msg("scoutid.help.learn.more")}
-								</a>
-							</p>
-						</div>
+						<span
+							id="kc-attempted-username"
+							className="text-[15px] font-semibold text-[#28354C]"
+						>
+							{auth.attemptedUsername}
+						</span>
+						<a
+							id="reset-login"
+							href={url.loginRestartFlowUrl}
+							aria-label={msgStr("restartLoginTooltip")}
+							className="text-[#4E84BE] text-[13px] no-underline hover:underline whitespace-nowrap"
+						>
+							{msg("restartLoginTooltip")}
+						</a>
+					</div>
+				) : (
+					headerNode
+				)}
+
+				{/* Global Keycloak message (session expired, account locked, etc.) */}
+				{displayMessage &&
+					message !== undefined &&
+					(message.type !== "warning" || !isAppInitiatedAction) && (
+						<ScoutCallout
+							variant={message.type as "info" | "success" | "warning" | "error"}
+						>
+							<span
+								dangerouslySetInnerHTML={{
+									__html: kcSanitize(message.summary),
+								}}
+							/>
+						</ScoutCallout>
 					)}
-				</div>
+
+				{children}
+
+				{/* "Try another way" — shown when user has alternative auth methods */}
+				{auth?.showTryAnotherWayLink && (
+					<form
+						id="kc-select-try-another-way-form"
+						action={url.loginAction}
+						method="post"
+					>
+						<input type="hidden" name="tryAnotherWay" value="on" />
+						{/* biome-ignore lint/a11y/useValidAnchor: Keycloak pattern requires form submit via anchor */}
+						<a
+							href="#"
+							id="try-another-way"
+							className="text-[#4E84BE] text-[13.5px] font-semibold no-underline hover:underline"
+							onClick={(e) => {
+								e.preventDefault();
+								(
+									document.getElementById(
+										"kc-select-try-another-way-form",
+									) as HTMLFormElement
+								).submit();
+							}}
+						>
+							{msg("doTryAnotherWay")}
+						</a>
+					</form>
+				)}
+
+				{socialProvidersNode}
+
+				{displayInfo && infoNode}
 			</div>
+
+			<footer className="flex items-center gap-3 text-[#666D7B]">
+				<svg
+					aria-hidden="true"
+					xmlns="http://www.w3.org/2000/svg"
+					viewBox="0 0 21 20"
+					className="w-8 h-8 shrink-0 fill-[#828B9C]"
+				>
+					<path d="M13.4,6.2c0.6-0.8,1-1.7,1-2.5c0-0.5-0.1-1-0.3-1.4c-0.5-1.1-1.6-1.9-3-2.2c0.9,0.8,2.6,2.4,2.6,4.8 C13.6,5.3,13.5,5.7,13.4,6.2L13.4,6.2z M6.9,6.2C6.8,5.7,6.7,5.3,6.7,4.8c0-2.4,1.6-4.1,2.6-4.8c-1.4,0.4-2.5,1.1-3,2.2 C6.1,2.7,6,3.2,6,3.6C6,4.5,6.3,5.4,6.9,6.2L6.9,6.2z M18.4,14.4c-0.7,0.3-3.1,1-5-1.7c-0.1,0.3-0.2,0.7-0.2,1.1 c0.3,0.2,0.4,0.5,0.4,0.7s-0.1,0.5-0.4,0.7c0.2,0.8,1,1.6,1.9,1.7c2.7,0.4,4-2,4.5-3.3C19.4,13.9,19,14.2,18.4,14.4L18.4,14.4z M10.2,15.9L10.2,15.9c-0.1,0-0.3,0-0.5,0c-0.1,1.3-0.2,2.7-1.5,3.9C9,20,9.9,20,10.2,20l0,0c0.2,0,1.2,0,1.9-0.2 c-1.3-1.2-1.4-2.6-1.5-3.9C10.5,15.9,10.2,15.9,10.2,15.9L10.2,15.9z M15.2,5c1.8-0.9,3-0.6,3.7-0.1c-1.4-2.3-3.4-3.5-4.4-4 c0.5,0.5,1.1,1.4,1.1,2.6C15.5,3.9,15.4,4.4,15.2,5L15.2,5z M12.5,15.9L12.5,15.9c0,0,0-0.1-0.1-0.3c-0.3,0.1-0.6,0.1-0.9,0.2 c0.1,1.7,0.9,2.9,2.3,3.5c1-0.3,2-0.9,2.5-1.3C13.2,18.4,12.5,16.2,12.5,15.9L12.5,15.9z M16.5,10.8c0.2,0.3,0.3,0.5,0.3,0.8 c0,0.1,0,0.3-0.1,0.4c0.3-0.1,0.7-0.4,1.1-1.1c0.2-0.5,0.3-0.9,0.3-1.3c0-1.2-0.9-1.8-1.3-2c-1.3-0.6-3.3-0.2-4,1.1 c-1,1.7-1.2,3.7-1.2,4.5c0.3,0,0.6,0.1,0.8,0.2v-0.1c0.2-1.6,1.1-2.8,2.2-3.1C15.4,10.1,16.1,10.3,16.5,10.8L16.5,10.8z M5.7,10.3 c1.1,0.3,2,1.5,2.2,3.1v0.1c0.3-0.1,0.5-0.1,0.8-0.2c-0.1-0.8-0.2-2.8-1.2-4.5c-0.7-1.4-2.7-1.7-4-1.1C3.1,7.8,2.2,8.4,2.2,9.6 c0,0.4,0.1,0.8,0.3,1.3c0.3,0.7,0.8,1,1.1,1.1c0-0.1-0.1-0.2-0.1-0.4c0-0.3,0.1-0.5,0.3-0.8C4.3,10.3,5,10.1,5.7,10.3L5.7,10.3z M7.9,15.9C7.8,16.2,7.1,18.4,4,18c0.6,0.4,1.5,1,2.5,1.3c1.4-0.7,2.2-1.8,2.3-3.5c-0.3,0-0.6-0.1-0.9-0.2 C7.9,15.7,7.9,15.9,7.9,15.9L7.9,15.9z M10.2,15.1c1.7,0,2.5-0.4,2.6-0.5c-0.1-0.1-0.9-0.5-2.6-0.5h-0.1c-1.7,0-2.5,0.4-2.6,0.5 C7.7,14.7,8.5,15.1,10.2,15.1L10.2,15.1z M5.2,5C4.9,4.4,4.8,3.9,4.8,3.4c0-1.1,0.6-2,1.1-2.6c-1,0.5-3,1.7-4.4,4 C2.2,4.4,3.4,4,5.2,5L5.2,5z M8.4,7.8L8.8,9c0.2,0.5,0.4,1,0.5,1.6c0.2,1,0.3,1.8,0.3,2.5v0.1l0,0c0.2,0,0.4,0,0.4,0h0.1 c0,0,0.3,0,0.4,0v-0.1c0-0.7,0.1-1.5,0.3-2.4c0.1-0.6,0.3-1.1,0.5-1.6l0.4-1.2c0.3-0.8,0.4-1.5,0.4-2.2c0-2.8-1.7-5-2.2-5.5 C9.7,0.6,8,2.7,8,5.6C8,6.3,8.1,7,8.4,7.8L8.4,7.8z M16.7,13.6c0.9,0,1.7-0.3,2.3-1c0.8-0.8,1.3-1.9,1.3-3.1S19.8,7.2,19,6.4 c-0.7-0.6-1.5-1-2.4-1c-1.2,0-2,0.7-2.6,1.3c2-0.8,3.8-0.1,4.6,1c0.7,1,0.8,2.3,0.2,3.3c-0.6,1.2-1.8,1.9-3.3,1.9h-0.4l0.3-0.3 c0.1-0.1,0.3-0.6,0.3-0.9c0-0.2-0.2-0.4-0.5-0.5s-0.8-0.1-1.2,0.2c-0.1,0.1-0.2,0.2-0.3,0.3C14.6,13,15.6,13.6,16.7,13.6L16.7,13.6z M7.1,15.2c-0.2-0.2-0.4-0.4-0.4-0.7c0-0.2,0.1-0.5,0.4-0.7c0-0.4-0.1-0.8-0.2-1.1c-1.9,2.7-4.3,2-5,1.7c-0.6-0.2-1-0.6-1.3-0.9 c0.5,1.3,1.8,3.8,4.5,3.3C6,16.7,6.9,16,7.1,15.2L7.1,15.2z M3.6,13.6c-0.9,0-1.7-0.3-2.3-1C0.5,11.9,0,10.8,0,9.6s0.5-2.3,1.3-3.1 c0.7-0.6,1.5-1,2.4-1c1.2,0,2,0.7,2.6,1.3c-2-0.8-3.8-0.1-4.6,1c-0.7,1-0.8,2.3-0.2,3.3c0.5,1.2,1.7,1.9,3.2,2h0.4l-0.3-0.3 c-0.1-0.1-0.3-0.6-0.3-0.9c0-0.2,0.2-0.4,0.5-0.5s0.8-0.1,1.2,0.2c0.1,0.1,0.2,0.2,0.3,0.3C5.7,13,4.8,13.6,3.6,13.6L3.6,13.6z" />
+				</svg>
+
+				<div className="flex flex-col gap-0">
+					<p className="text-[12px] m-0">En e-tjänst från Scouterna</p>
+					<a
+						href="https://www.scouterna.se/personuppgiftsbehandling/"
+						className="text-[12px] underline hover:underline"
+					>
+						Personuppgiftsbehandling
+					</a>
+				</div>
+			</footer>
 		</div>
 	);
 }

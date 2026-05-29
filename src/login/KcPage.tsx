@@ -1,28 +1,39 @@
 import type { ClassKey } from "keycloakify/login";
 import DefaultPage from "keycloakify/login/DefaultPage";
-import { lazy, Suspense, useMemo } from "react";
+import { lazy, Suspense } from "react";
 import { useI18n } from "./i18n";
 import type { KcContext } from "./KcContext";
 import Template from "./Template";
 
+import "./style.css";
+
+import "@scouterna/ui-webc/style.css";
+import "@fontsource-variable/source-sans-3/index.css";
+
+const doMakeUserConfirmPassword = true;
+
 const UserProfileFormFields = lazy(
 	() => import("keycloakify/login/UserProfileFormFields"),
 );
-import "./main-common.css";
-
-const doMakeUserConfirmPassword = true;
+const Login = lazy(() => import("./pages/Login"));
 
 export default function KcPage(props: { kcContext: KcContext }) {
 	const { kcContext } = props;
 
 	const { i18n } = useI18n({ kcContext });
 
-	useCustomCss(kcContext);
-
 	return (
 		<Suspense>
 			{(() => {
 				switch (kcContext.pageId) {
+					case "login.ftl":
+						return (
+							<Login
+								{...{ kcContext, i18n, classes }}
+								Template={Template}
+								doUseDefaultCss={false}
+							/>
+						);
 					default:
 						return (
 							<DefaultPage
@@ -30,7 +41,7 @@ export default function KcPage(props: { kcContext: KcContext }) {
 								i18n={i18n}
 								classes={classes}
 								Template={Template}
-								doUseDefaultCss={true}
+								doUseDefaultCss={false}
 								UserProfileFormFields={UserProfileFormFields}
 								doMakeUserConfirmPassword={doMakeUserConfirmPassword}
 							/>
@@ -42,16 +53,3 @@ export default function KcPage(props: { kcContext: KcContext }) {
 }
 
 const classes = {} satisfies { [key in ClassKey]?: string };
-
-function useCustomCss(kcContext: KcContext) {
-	useMemo(() => {
-		switch (kcContext.themeName) {
-			case "scoutid":
-				import("./main-scoutid-default.css");
-				break;
-			default:
-				import("./main-scoutid-default.css");
-				break;
-		}
-	}, [kcContext.themeName]);
-}
