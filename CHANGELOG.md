@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/Scouterna/scoutid-keycloak-theme/compare/v0.2.1...v0.3.0) (2026-05-29)
+
+
+### Features
+
+* new design based on component library ([3e011c0](https://github.com/Scouterna/scoutid-keycloak-theme/commit/3e011c0200856b44a2539f5c0ed6bb08ba76b376))
+
 ## [0.2.1](https://github.com/Scouterna/scoutid-keycloak-theme/compare/v0.2.0...v0.2.1) (2025-12-30)
 
 
