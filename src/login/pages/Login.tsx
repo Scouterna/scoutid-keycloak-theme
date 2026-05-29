@@ -148,7 +148,7 @@ export default function Login(
 								defaultValue={login.username ?? ""}
 								type="text"
 								autoFocus
-								autoComplete="username"
+								autocomplete="username"
 							/>
 						</ScoutField>
 					)}
@@ -158,7 +158,7 @@ export default function Login(
 							id="password"
 							name="password"
 							type="password"
-							autoComplete="current-password"
+							autocomplete="current-password"
 						/>
 					</ScoutField>
 
