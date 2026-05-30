@@ -170,14 +170,13 @@ export default function Login(
 								checked={!!login.rememberMe}
 							/>
 						)}
-						{realm.resetPasswordAllowed && (
-							<a
-								href="https://www.scoutnet.se/request_password"
-								className="ml-auto text-[#4E84BE] text-[14.5px] font-semibold no-underline hover:underline whitespace-nowrap"
-							>
-								{msg("doForgotPassword")}
-							</a>
-						)}
+
+						<a
+							href="https://www.scoutnet.se/request_password"
+							className="ml-auto text-[#4E84BE] text-[14.5px] font-semibold no-underline hover:underline whitespace-nowrap"
+						>
+							{msg("doForgotPassword")}
+						</a>
 					</div>
 
 					<input
