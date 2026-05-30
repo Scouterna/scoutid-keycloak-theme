@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.2](https://github.com/Scouterna/scoutid-keycloak-theme/compare/v0.3.1...v0.3.2) (2026-05-30)
+
+
+### Bug Fixes
+
+* always show password reset link when password field is visible ([98df602](https://github.com/Scouterna/scoutid-keycloak-theme/commit/98df602172b22fc145d54278cb6d5fcdd222bdba))
+
 ## [0.3.1](https://github.com/Scouterna/scoutid-keycloak-theme/compare/v0.3.0...v0.3.1) (2026-05-29)
 
 
