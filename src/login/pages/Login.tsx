@@ -24,8 +24,7 @@ export default function Login(
 		usernameHidden,
 		login,
 		auth,
-		registrationDisabled,
-		messagesPerField,
+messagesPerField,
 		enableWebAuthnConditionalUI,
 		authenticators,
 	} = kcContext;
@@ -35,7 +34,6 @@ export default function Login(
 	const { msg, msgStr } = i18n;
 
 	const [isLoginButtonDisabled, setIsLoginButtonDisabled] = useState(false);
-
 	const webAuthnButtonId = "authenticateWebAuthnButton";
 
 	useScript({
@@ -45,6 +43,7 @@ export default function Login(
 	});
 
 	const hasError = messagesPerField.existsError("username", "password");
+	const [helpOpen, setHelpOpen] = useState(hasError);
 
 	return (
 		<Template
@@ -63,15 +62,7 @@ export default function Login(
 					</p>
 				</>
 			}
-			displayInfo={
-				realm.password && realm.registrationAllowed && !registrationDisabled
-			}
-			infoNode={
-				<span>
-					{msg("noAccount")}{" "}
-					<a href={url.registrationUrl}>{msg("doRegister")}</a>
-				</span>
-			}
+			displayInfo={false}
 			socialProvidersNode={
 				realm.password &&
 				social?.providers !== undefined &&
@@ -198,28 +189,54 @@ export default function Login(
 
 					<hr className="border-0 border-t border-[#E7EAF0]" />
 					<div className="flex flex-col gap-2">
-						<p className="text-[14.5px] font-bold text-[#283040] m-0">
+						<button
+							type="button"
+							onClick={() => setHelpOpen(o => !o)}
+							className="flex items-center justify-between text-left text-[14.5px] font-bold text-[#283040] bg-transparent border-0 p-0 cursor-pointer w-full"
+						>
 							{msg("scoutid.help.title")}
-						</p>
-						<p className="text-[13.5px] leading-normal text-[#5C6678] m-0">
-							{msg("scoutid.help.body")}{" "}
-							<a
-								href="https://www.scouterna.se/scout-ledare-kar/leda-kar/etjanster/scoutid/"
-								className="text-[#4E84BE] font-semibold no-underline hover:underline"
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								width="18"
+								height="18"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								strokeWidth="2"
+								strokeLinecap="round"
+								strokeLinejoin="round"
+								className={`shrink-0 transition-transform duration-200 ${helpOpen ? "rotate-180" : ""}`}
 							>
-								{msg("scoutid.help.learn.more")}
-							</a>
-						</p>
-						<p className="text-[13.5px] leading-normal text-[#5C6678] m-0">
-							{msg("scoutid.help.equmenia.before")}{" "}
-							<a
-								href="mailto:scoutnet@scouterna.se"
-								className="text-[#4E84BE] font-semibold no-underline hover:underline"
-							>
-								scoutnet@scouterna.se
-							</a>{" "}
-							{msg("scoutid.help.equmenia.after")}
-						</p>
+								<path d="M6 9l6 6 6-6" />
+							</svg>
+						</button>
+						{helpOpen && (
+							<div className="flex flex-col gap-4">
+								<div className="flex flex-col gap-1">
+									<p className="text-[13.5px] font-semibold text-[#283040] m-0">
+										{msg("scoutid.help.email.heading")}
+									</p>
+									<p className="text-[13.5px] leading-normal text-[#5C6678] m-0">
+										{msg("scoutid.help.email.body")}
+									</p>
+								</div>
+								<div className="flex flex-col gap-1">
+									<p className="text-[13.5px] font-semibold text-[#283040] m-0">
+										{msg("scoutid.help.scoutid.heading")}
+									</p>
+									<p className="text-[13.5px] leading-normal text-[#5C6678] m-0">
+										{msg("scoutid.help.scoutid.body")}{" "}
+										<a
+											href="mailto:scoutnet@scouterna.se"
+											className="text-[#4E84BE] font-semibold no-underline hover:underline"
+										>
+											scoutnet@scouterna.se
+										</a>{" "}
+										{msg("scoutid.help.scoutid.after")}
+									</p>
+								</div>
+							</div>
+						)}
 					</div>
 				</form>
 			)}

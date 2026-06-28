@@ -29,13 +29,14 @@ const { useI18n, ofTypeI18n } = i18nBuilder
 			// Login page
 			"scoutid.login.subheadline": "Sign in with your ScoutID to continue.",
 			// Help section
-			"scoutid.help.title": "Don't have a login?",
-			"scoutid.help.body":
-				"You need a ScoutID, which you automatically have if you are a member of a scout troop directly connected to Scouterna, NSF, or Salt Scout.",
-			"scoutid.help.learn.more": "Learn more about ScoutID",
-			"scoutid.help.equmenia.before":
-				"If you are a member of Equmenia, contact",
-			"scoutid.help.equmenia.after": "for help getting a ScoutID.",
+			"scoutid.help.title": "Need help signing in?",
+			"scoutid.help.email.heading": "Having trouble signing in with email?",
+			"scoutid.help.email.body":
+				"If multiple members share the same email address in Scoutnet — for example if both a guardian and a child are members — signing in with email may fail. Use your membership number or personal identity number instead.",
+			"scoutid.help.scoutid.heading": "Do I have a ScoutID?",
+			"scoutid.help.scoutid.body":
+				"To sign in you need an account in the member system Scoutnet. Most scouts have one automatically, but if you are a member through Equmenia contact",
+			"scoutid.help.scoutid.after": "for help.",
 		},
 		sv: {
 			// Override default Keycloak field labels
@@ -48,13 +49,14 @@ const { useI18n, ofTypeI18n } = i18nBuilder
 			"scoutid.login.subheadline":
 				"Logga in med ditt ScoutID för att fortsätta.",
 			// Help section
-			"scoutid.help.title": "Har du en inloggning?",
-			"scoutid.help.body":
-				"För att logga in på den här e-tjänsten behöver du ett ScoutID, som du har automatiskt om du är direktansluten till Scouterna, Nykterhetsrörelsens Scoutförbund eller Salt Scout.",
-			"scoutid.help.learn.more": "Läs mer om ScoutID",
-			"scoutid.help.equmenia.before": "Om du är medlem i Equmenia, kontakta",
-			"scoutid.help.equmenia.after":
-				"för att få hjälp med att skaffa ett ScoutID.",
+			"scoutid.help.title": "Behöver du hjälp att logga in?",
+			"scoutid.help.email.heading": "Problem med att logga in med e-post?",
+			"scoutid.help.email.body":
+				"Om flera medlemmar delar samma e-postadress i Scoutnet, till exempel om både vårdnadshavare och barn är medlemmar, kan inloggning med e-post misslyckas. Använd då istället medlemsnummer eller personnummer.",
+			"scoutid.help.scoutid.heading": "Har jag ett ScoutID?",
+			"scoutid.help.scoutid.body":
+				"För att logga in behöver du en inloggning i medlemssystemet Scoutnet. De flesta scouter har det automatiskt, men om du är medlem genom Equmenia kontakta",
+			"scoutid.help.scoutid.after": "för att få hjälp.",
 		},
 	})
 	.build();
