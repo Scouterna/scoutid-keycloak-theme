@@ -29,8 +29,6 @@ export default function Login(
 		authenticators,
 	} = kcContext;
 
-	console.log(login);
-
 	const { msg, msgStr } = i18n;
 
 	const [isLoginButtonDisabled, setIsLoginButtonDisabled] = useState(false);
