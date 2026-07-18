@@ -42,6 +42,18 @@ Read more here: [Documentation](https://docs.keycloakify.dev/testing-your-theme)
 
 If you want to try the full flow including scoutnet login, follow instructions in [scoutid-keycloak-provider](https://github.com/Scouterna/scoutid-keycloak-provider).
 
+# Accessibility
+
+Storybook includes [@storybook/addon-a11y](https://storybook.js.org/addons/@storybook/addon-a11y), which runs
+axe-core against the currently rendered story. When testing a change, open the **Accessibility** tab in the
+addon panel for each story you touched (including error/expanded states — axe only scans what's actually in
+the DOM, so collapsed content or unselected stories won't be checked).
+
+This is a manual check, not run in CI — remember to look at it yourself before opening a PR. Automated axe
+checks don't catch everything either (e.g. missing `aria-expanded` on custom toggles, keyboard-only
+navigation, or screen reader announcements), so for any new interactive component also do a quick manual
+keyboard pass (Tab/Enter/Space) and, ideally, a screen reader spot check.
+
 # How to customize the theme
 
 [Documentation](https://docs.keycloakify.dev/customization-strategies)

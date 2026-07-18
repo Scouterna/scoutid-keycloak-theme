@@ -69,7 +69,7 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
 										className={
 											languageTag === currentLanguage.languageTag
 												? "font-semibold text-[#28354C]"
-												: "text-[#4E84BE] no-underline hover:underline"
+												: "text-blue-700 no-underline hover:underline"
 										}
 									>
 										{label}
@@ -96,7 +96,7 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
 							id="reset-login"
 							href={url.loginRestartFlowUrl}
 							aria-label={msgStr("restartLoginTooltip")}
-							className="text-[#4E84BE] text-[13px] no-underline hover:underline whitespace-nowrap"
+							className="text-blue-700 text-[13px] no-underline hover:underline whitespace-nowrap"
 						>
 							{msg("restartLoginTooltip")}
 						</a>
@@ -134,7 +134,7 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
 						<a
 							href="#"
 							id="try-another-way"
-							className="text-[#4E84BE] text-[13.5px] font-semibold no-underline hover:underline"
+							className="text-blue-700 text-[13.5px] font-semibold no-underline hover:underline"
 							onClick={(e) => {
 								e.preventDefault();
 								(
