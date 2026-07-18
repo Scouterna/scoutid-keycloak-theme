@@ -35,8 +35,8 @@ const { useI18n, ofTypeI18n } = i18nBuilder
 				"If multiple members share the same email address in Scoutnet — for example if both a guardian and a child are members — signing in with email may fail. Use your membership number or personal identity number instead.",
 			"scoutid.help.scoutid.heading": "Do I have a ScoutID?",
 			"scoutid.help.scoutid.body":
-				"To sign in you need an account in the member system Scoutnet. Most scouts have one automatically, but if you are a member through Equmenia contact",
-			"scoutid.help.scoutid.after": "for help.",
+				"To sign in you need an account in the member system Scoutnet. Most scouts have one automatically — if you haven't signed in before you can reset your password using the link above. If you are a member through Equmenia contact",
+			"scoutid.help.scoutid.after": "to be added manually.",
 		},
 		sv: {
 			// Override default Keycloak field labels
