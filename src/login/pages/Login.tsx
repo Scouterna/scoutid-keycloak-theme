@@ -24,7 +24,7 @@ export default function Login(
 		usernameHidden,
 		login,
 		auth,
-messagesPerField,
+		messagesPerField,
 		enableWebAuthnConditionalUI,
 		authenticators,
 	} = kcContext;
@@ -164,7 +164,7 @@ messagesPerField,
 
 						<a
 							href="https://www.scoutnet.se/request_password"
-							className="ml-auto text-[#4E84BE] text-[14.5px] font-semibold no-underline hover:underline whitespace-nowrap"
+							className="ml-auto text-blue-700 text-[14.5px] font-semibold no-underline hover:underline whitespace-nowrap"
 						>
 							{msg("doForgotPassword")}
 						</a>
@@ -191,7 +191,9 @@ messagesPerField,
 					<div className="flex flex-col gap-2">
 						<button
 							type="button"
-							onClick={() => setHelpOpen(o => !o)}
+							onClick={() => setHelpOpen((o) => !o)}
+							aria-expanded={helpOpen}
+							aria-controls="scoutid-help-panel"
 							className="flex items-center justify-between text-left text-[14.5px] font-bold text-[#283040] bg-transparent border-0 p-0 cursor-pointer w-full"
 						>
 							{msg("scoutid.help.title")}
@@ -205,13 +207,14 @@ messagesPerField,
 								strokeWidth="2"
 								strokeLinecap="round"
 								strokeLinejoin="round"
+								aria-hidden="true"
 								className={`shrink-0 transition-transform duration-200 ${helpOpen ? "rotate-180" : ""}`}
 							>
 								<path d="M6 9l6 6 6-6" />
 							</svg>
 						</button>
 						{helpOpen && (
-							<div className="flex flex-col gap-4">
+							<div id="scoutid-help-panel" className="flex flex-col gap-4">
 								<div className="flex flex-col gap-1">
 									<p className="text-[13.5px] font-semibold text-[#283040] m-0">
 										{msg("scoutid.help.email.heading")}
@@ -228,7 +231,7 @@ messagesPerField,
 										{msg("scoutid.help.scoutid.body")}{" "}
 										<a
 											href="mailto:scoutnet@scouterna.se"
-											className="text-[#4E84BE] font-semibold no-underline hover:underline"
+											className="text-blue-700 font-semibold no-underline hover:underline"
 										>
 											scoutnet@scouterna.se
 										</a>{" "}
