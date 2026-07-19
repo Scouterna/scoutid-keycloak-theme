@@ -211,33 +211,35 @@ export default function Login(
 								<path d="M6 9l6 6 6-6" />
 							</svg>
 						</button>
-						{helpOpen && (
-							<div id="scoutid-help-panel" className="flex flex-col gap-4">
-								<div className="flex flex-col gap-1">
-									<p className="text-[13.5px] font-semibold text-[#283040] m-0">
-										{msg("scoutid.help.email.heading")}
-									</p>
-									<p className="text-[13.5px] leading-normal text-[#5C6678] m-0">
-										{msg("scoutid.help.email.body")}
-									</p>
-								</div>
-								<div className="flex flex-col gap-1">
-									<p className="text-[13.5px] font-semibold text-[#283040] m-0">
-										{msg("scoutid.help.scoutid.heading")}
-									</p>
-									<p className="text-[13.5px] leading-normal text-[#5C6678] m-0">
-										{msg("scoutid.help.scoutid.body")}{" "}
-										<a
-											href="mailto:scoutnet@scouterna.se"
-											className="text-blue-700 font-semibold no-underline hover:underline"
-										>
-											scoutnet@scouterna.se
-										</a>{" "}
-										{msg("scoutid.help.scoutid.after")}
-									</p>
-								</div>
+						<div
+							id="scoutid-help-panel"
+							hidden={!helpOpen}
+							className="flex flex-col gap-4"
+						>
+							<div className="flex flex-col gap-1">
+								<p className="text-[13.5px] font-semibold text-[#283040] m-0">
+									{msg("scoutid.help.email.heading")}
+								</p>
+								<p className="text-[13.5px] leading-normal text-[#5C6678] m-0">
+									{msg("scoutid.help.email.body")}
+								</p>
 							</div>
-						)}
+							<div className="flex flex-col gap-1">
+								<p className="text-[13.5px] font-semibold text-[#283040] m-0">
+									{msg("scoutid.help.scoutid.heading")}
+								</p>
+								<p className="text-[13.5px] leading-normal text-[#5C6678] m-0">
+									{msg("scoutid.help.scoutid.body")}{" "}
+									<a
+										href="mailto:scoutnet@scouterna.se"
+										className="text-blue-700 font-semibold no-underline hover:underline"
+									>
+										scoutnet@scouterna.se
+									</a>{" "}
+									{msg("scoutid.help.scoutid.after")}
+								</p>
+							</div>
+						</div>
 					</div>
 				</form>
 			)}
