@@ -55,8 +55,8 @@ const { useI18n, ofTypeI18n } = i18nBuilder
 				"Om flera medlemmar delar samma e-postadress i Scoutnet, till exempel om både vårdnadshavare och barn är medlemmar, kan inloggning med e-post misslyckas. Använd då istället medlemsnummer eller personnummer.",
 			"scoutid.help.scoutid.heading": "Har jag ett ScoutID?",
 			"scoutid.help.scoutid.body":
-				"För att logga in behöver du en inloggning i medlemssystemet Scoutnet. De flesta scouter har det automatiskt, men om du är medlem genom Equmenia kontakta",
-			"scoutid.help.scoutid.after": "för att få hjälp.",
+				"För att logga in behöver du en inloggning i medlemssystemet Scoutnet. De flesta scouter har det automatiskt, har du inte loggat in tidigare kan du återställa lösenordet genom länken ovan. Om du är medlem genom Equmenia kontakta",
+			"scoutid.help.scoutid.after": "för att läggas till manuellt.",
 		},
 	})
 	.build();
