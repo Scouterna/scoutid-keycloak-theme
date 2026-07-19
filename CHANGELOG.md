@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.4.0](https://github.com/Scouterna/scoutid-keycloak-theme/compare/v0.3.2...v0.4.0) (2026-07-19)
+
+
+### Features
+
+* replace static help section with collapsible toggle ([a02422b](https://github.com/Scouterna/scoutid-keycloak-theme/commit/a02422bb27284cea22f45e77549b3a50d2549e58))
+
+
+### Bug Fixes
+
+* address accessibility issues in login page ([b0b0c2d](https://github.com/Scouterna/scoutid-keycloak-theme/commit/b0b0c2d965aae98415f5f6ca31c4efa792667aa5))
+* clarify ScoutID help text ([461b233](https://github.com/Scouterna/scoutid-keycloak-theme/commit/461b233fc8177122698616ad867d287619679a1a))
+* keep collapsible help panel in the DOM ([fd8f976](https://github.com/Scouterna/scoutid-keycloak-theme/commit/fd8f97679c7cc17bc8445ffd8da57e740a1bb4a5))
+* remove leftover debug console.log ([415a8c2](https://github.com/Scouterna/scoutid-keycloak-theme/commit/415a8c2779868983f833bdd9458961a1504103b5))
+* sync sv translation in i18n.ts with messages_sv.properties ([f600e97](https://github.com/Scouterna/scoutid-keycloak-theme/commit/f600e9794b32790df7d069427ee30fda6a09d788))
+
 ## [0.3.2](https://github.com/Scouterna/scoutid-keycloak-theme/compare/v0.3.1...v0.3.2) (2026-05-30)
 
 
