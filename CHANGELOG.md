@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.1](https://github.com/Scouterna/scoutid-keycloak-theme/compare/v0.4.0...v0.4.1) (2026-07-22)
+
+
+### Bug Fixes
+
+* expose custom scoutid.* i18n keys to realm-level overrides ([4ec85f6](https://github.com/Scouterna/scoutid-keycloak-theme/commit/4ec85f6660e1d2cee80e1f88b45c5a525c6cf739))
+
 ## [0.4.0](https://github.com/Scouterna/scoutid-keycloak-theme/compare/v0.3.2...v0.4.0) (2026-07-19)
 
 
