@@ -37,6 +37,8 @@ const { useI18n, ofTypeI18n } = i18nBuilder
 			"scoutid.help.scoutid.body":
 				"To sign in you need an account in the member system Scoutnet. Most scouts have one automatically — if you haven't signed in before you can reset your password using the link above. If you are a member through Equmenia contact",
 			"scoutid.help.scoutid.after": "to be added manually.",
+			// Error page
+			"scoutid.error.restart": "Sign out",
 		},
 		sv: {
 			// Override default Keycloak field labels
@@ -57,6 +59,8 @@ const { useI18n, ofTypeI18n } = i18nBuilder
 			"scoutid.help.scoutid.body":
 				"För att logga in behöver du en inloggning i medlemssystemet Scoutnet. De flesta scouter har det automatiskt, har du inte loggat in tidigare kan du återställa lösenordet genom länken ovan. Om du är medlem genom Equmenia kontakta",
 			"scoutid.help.scoutid.after": "för att läggas till manuellt.",
+			// Error page
+			"scoutid.error.restart": "Logga ut",
 		},
 	})
 	.build();
