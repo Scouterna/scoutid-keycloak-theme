@@ -16,6 +16,8 @@ const UserProfileFormFields = lazy(
 	() => import("keycloakify/login/UserProfileFormFields"),
 );
 const Login = lazy(() => import("./pages/Login"));
+const Error = lazy(() => import("./pages/Error"));
+const LogoutConfirm = lazy(() => import("./pages/LogoutConfirm"));
 
 export default function KcPage(props: { kcContext: KcContext }) {
 	const { kcContext } = props;
@@ -29,6 +31,22 @@ export default function KcPage(props: { kcContext: KcContext }) {
 					case "login.ftl":
 						return (
 							<Login
+								{...{ kcContext, i18n, classes }}
+								Template={Template}
+								doUseDefaultCss={false}
+							/>
+						);
+					case "error.ftl":
+						return (
+							<Error
+								{...{ kcContext, i18n, classes }}
+								Template={Template}
+								doUseDefaultCss={false}
+							/>
+						);
+					case "logout-confirm.ftl":
+						return (
+							<LogoutConfirm
 								{...{ kcContext, i18n, classes }}
 								Template={Template}
 								doUseDefaultCss={false}
