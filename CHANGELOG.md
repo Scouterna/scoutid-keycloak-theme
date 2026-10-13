@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.2](https://github.com/Scouterna/scoutid-keycloak-theme/compare/v0.4.1...v0.4.2) (2026-10-13)
+
+
+### Bug Fixes
+
+* add custom error and logout-confirm pages to replace unstyled defaults ([85f1e6f](https://github.com/Scouterna/scoutid-keycloak-theme/commit/85f1e6f71999ae038b87ad8395fd525d704cf26a))
+
 ## [0.4.1](https://github.com/Scouterna/scoutid-keycloak-theme/compare/v0.4.0...v0.4.1) (2026-07-22)
 
 
