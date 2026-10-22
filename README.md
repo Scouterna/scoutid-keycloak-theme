@@ -5,23 +5,17 @@
 </div>
 
 > [!TIP]
-> ScoutID documentation available at [ScoutID Wiki](https://github.com/Scouterna/scoutid-keycloak/wiki).
+> ScoutID configuration documentation available at [ScoutID Wiki](https://github.com/Scouterna/scoutid-keycloak/wiki).
 >
 > This repo is part of a family:
 > - [scoutid-keycloak](https://github.com/Scouterna/scoutid-keycloak)
-> - [scoutid-keycloak-provider](https://github.com/Scouterna/scoutid-keycloak-provider) (this repo)
-> - [scoutid-keycloak-theme](https://github.com/Scouterna/scoutid-keycloak-theme)
+> - [scoutid-keycloak-provider](https://github.com/Scouterna/scoutid-keycloak-provider)
+> - [scoutid-keycloak-theme](https://github.com/Scouterna/scoutid-keycloak-theme)  (this repo)
+> - [scoutid-keycloak-helm](https://github.com/Scouterna/scoutid-keycloak-helm)
 > - [scoutid-keycloak-infra](https://github.com/Scouterna/scoutid-keycloak-infra) (private)
 
 This repository contains a custom theme for Keycloak used by ScoutID, the Guides
-and Scouts of Sweden's membership system.
-
-
-<p align="center">
-    <i>🚀 <a href="https://keycloakify.dev">Keycloakify</a> v11 starter 🚀</i>
-    <br/>
-    <br/>
-</p>
+and Scouts of Sweden's membership system. Based on [Keycloakify](https://keycloakify.dev).
 
 # Quick start
 
@@ -76,11 +70,18 @@ pnpm run build-keycloak-theme
 Note that by default Keycloakify generates multiple .jar files for different versions of Keycloak.  
 You can customize this behavior, see documentation [here](https://docs.keycloakify.dev/features/compiler-options/keycloakversiontargets).
 
-# GitHub Actions
+## Commits and releases
 
-The starter comes with a generic GitHub Actions workflow that builds the theme and publishes
-the jars [as GitHub releases artifacts](https://github.com/keycloakify/keycloakify-starter/releases/tag/v10.0.0).  
-To release a new version **just update the `package.json` version and push**.
+This repository uses
+[release-please](https://github.com/googleapis/release-please) to manage
+releases and all commits must therefore follow the [Conventional
+Commits](https://www.conventionalcommits.org/) format.
 
-To enable the workflow go to your fork of this repository on GitHub then navigate to:
-`Settings` > `Actions` > `Workflow permissions`, select `Read and write permissions`.
+Every commit pushed to the `main` branch will inspected by release-please.
+Commits that cause a version bump will cause release-please to create or update
+an existing release pull request. Merging this pull request will trigger a
+release.
+
+Once a release is created a workflow will automatically build the project and
+publish the resulting jar to the GitHub Packages Maven registry and also add it
+to the release assets.

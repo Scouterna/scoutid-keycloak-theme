@@ -231,10 +231,10 @@ export default function Login(
 								<p className="text-[13.5px] leading-normal text-[#5C6678] m-0">
 									{msg("scoutid.help.scoutid.body")}{" "}
 									<a
-										href="mailto:scoutnet@scouterna.se"
+										href="mailto:support@scouterna.se"
 										className="text-blue-700 font-semibold no-underline hover:underline"
 									>
-										scoutnet@scouterna.se
+										support@scouterna.se
 									</a>{" "}
 									{msg("scoutid.help.scoutid.after")}
 								</p>
