@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.0](https://github.com/Scouterna/scoutid-keycloak-theme/compare/v0.4.2...v1.0.0) (2026-10-23)
+
+
+### Miscellaneous Chores
+
+* release 1.0.0 ([3f03eed](https://github.com/Scouterna/scoutid-keycloak-theme/commit/3f03eed582ad44066d6d373c9676d397e4caa7c5))
+
 ## [0.4.2](https://github.com/Scouterna/scoutid-keycloak-theme/compare/v0.4.1...v0.4.2) (2026-10-13)
 
 
